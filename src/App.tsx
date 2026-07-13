@@ -5,7 +5,7 @@ import { useParticipants } from './hooks/useParticipants';
 import { usePrizes } from './hooks/usePrizes';
 import LandingPage from './pages/LandingPage';
 import FormPage from './pages/FormPage';
-import RoulettePage from './pages/RoulettePage';
+// import RoulettePage from './pages/RoulettePage';
 import AdminPage from './pages/AdminPage';
 
 function AnimatedPage({ children, keyValue }: { children: React.ReactNode; keyValue: string }) {
@@ -36,28 +36,29 @@ export default function App() {
   );
   const backgroundImage = new URL('/background-text.jpg', import.meta.url).href;
   const [currentParticipant, setCurrentParticipant] = useState<Participant | null>(null);
-  const { prizes, loading: prizesLoading } = usePrizes();
-  const { participants, addParticipant, updateParticipantPrize, exportCSV } = useParticipants();
+  // const { prizes, loading: prizesLoading } = usePrizes();
+  const { participants, addParticipant, exportCSV } = useParticipants();
 
   const handlePlay = () => setPage('form');
 
   const handleFormSubmit = (participant: Participant) => {
     addParticipant(participant);
     setCurrentParticipant(participant);
-    setPage('roulette');
-  };
-
-  const handlePrizeWon = (prize: Prize) => {
-    if (currentParticipant) {
-      updateParticipantPrize(currentParticipant.id, prize.id, prize.label);
-    }
-  };
-
-  const handleRestart = () => {
-    setCurrentParticipant(null);
+    // setPage('roulette');
     setPage('landing');
-    window.scrollTo(0, 0);
   };
+
+  // const handlePrizeWon = (prize: Prize) => {
+  //   if (currentParticipant) {
+  //     updateParticipantPrize(currentParticipant.id, prize.id, prize.label);
+  //   }
+  // };
+
+  // const handleRestart = () => {
+  //   setCurrentParticipant(null);
+  //   setPage('landing');
+  //   window.scrollTo(0, 0);
+  // };
 
   const handleAdminBack = () => {
     window.location.hash = '';
@@ -66,7 +67,8 @@ export default function App() {
 
   const transitionKey = `${page}-${currentParticipant?.id ?? 'none'}`;
 
-  if (prizesLoading) {
+  // if (prizesLoading) {
+  if (false) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#050505] text-white">
         <div className="text-center text-white space-y-4">
@@ -99,7 +101,7 @@ export default function App() {
               onSubmit={handleFormSubmit}
             />
           )}
-          {page === 'roulette' && currentParticipant && (
+          {/* {page === 'roulette' && currentParticipant && (
             <RoulettePage
               prizes={prizes}
               participant={currentParticipant}
@@ -107,7 +109,7 @@ export default function App() {
               onPrizeWon={handlePrizeWon}
               onRestart={handleRestart}
             />
-          )}
+          )} */}
           {page === 'admin' && (
             <AdminPage
               participants={participants}
