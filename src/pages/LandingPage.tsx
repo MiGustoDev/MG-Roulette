@@ -77,7 +77,7 @@ export default function LandingPage({ onPlay }: LandingPageProps) {
 
             <div className="flex items-center gap-2 text-white/70 text-base max-w-3xl text-center leading-relaxed">
               <span>
-                Completá el formulario, girá la ruleta y llevate un premio especial de nuestra reapertura en Bella Vista.
+                Completá el formulario y llevate un premio especial de nuestra reapertura en Bella Vista.
               </span>
             </div>
           </div>
@@ -89,11 +89,6 @@ export default function LandingPage({ onPlay }: LandingPageProps) {
             <p className="mt-3">
               Válido solo en el evento de reapertura de Bella Vista.
             </p>
-            <div className="flex items-center justify-center gap-2 text-white/50 text-xs mt-4 animate-bounce">
-              <ChevronDown className="w-4 h-4" />
-              <span>Deslizá para participar</span>
-              <ChevronDown className="w-4 h-4" />
-            </div>
           </div>
         </div>
       </div>
